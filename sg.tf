@@ -1,7 +1,6 @@
 resource "aws_security_group" "sg1" {
   name        = "terraform-sg"
   description = "Allow httpd"
-  depends_on  = [aws_security_group.sg2]
   vpc_id = aws_vpc.vpc1.id
 
   ingress {
@@ -35,7 +34,7 @@ resource "aws_security_group" "sg2" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    #cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
